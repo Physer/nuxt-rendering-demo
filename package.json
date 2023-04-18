@@ -1,5 +1,7 @@
 {
-  "name": "nuxt-app",
+  "name": "nuxt-rendering-demo",
+  "version": "0.1.0",
+  "author": "Alex Schouls",
   "private": true,
   "scripts": {
     "build": "nuxt build",
