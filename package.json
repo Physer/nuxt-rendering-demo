@@ -1,17 +1,19 @@
 {
   "name": "nuxt-rendering-demo",
   "version": "0.1.0",
-  "author": "Alex Schouls",
   "private": true,
+  "author": "Alex Schouls",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "nuxt": "^3.4.2"
   },
   "devDependencies": {
-    "@types/node": "^18",
-    "nuxt": "^3.4.1"
+    "@types/node": "^18"
   }
 }
