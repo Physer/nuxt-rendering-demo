@@ -11,6 +11,7 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
+    "contentstack": "^3.17.1",
     "nuxt": "^3.4.2"
   },
   "devDependencies": {
