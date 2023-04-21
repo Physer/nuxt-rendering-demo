@@ -1,9 +1,9 @@
 <template>
   <div>
-    <NuxtWelcome />
+    {{ contentPages  }}
   </div>
 </template>
 
 <script setup="ts">
-const contentPage = await fetchContentPages();
+const contentPages = await fetchContentPages();
 </script>

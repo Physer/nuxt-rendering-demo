@@ -1,6 +1,6 @@
 import { Stack } from "contentstack";
 
-export async function fetchContentPages() {
+export async function fetchContentPages(): Promise<string> {
   const config = useRuntimeConfig();
   const stack = Stack({
     api_key: config?.public?.contentstackApikey,
@@ -10,5 +10,5 @@ export async function fetchContentPages() {
   const contentType = "schouls_content_page";
   const query = stack.ContentType(contentType).Query();
   const result = await query.toJSON().find();
-  return "";
+  return JSON.stringify(result);
 }
