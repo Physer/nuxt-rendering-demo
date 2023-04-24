@@ -8,5 +8,5 @@
 </template>
 
 <script setup lang="ts">
-const data = await fetchContentPage();
+const data = await fetchContentPage('/content-page');
 </script>
