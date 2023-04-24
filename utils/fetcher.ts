@@ -2,6 +2,7 @@ import { Stack } from 'contentstack';
 import { ContentPage } from '~/types/pages';
 import { NuxtRoute } from '~/types/route';
 
+const allPageData: Array<NuxtRoute<ContentPage>> = [];
 export async function fetchContentPages(): Promise<
     Array<NuxtRoute<ContentPage>>
 > {
@@ -16,7 +17,6 @@ export async function fetchContentPages(): Promise<
     const query = stack.ContentType(contentType).Query();
     const result: Array<any> = await query.toJSON().find();
 
-    const contentPageRouteData: Array<NuxtRoute<ContentPage>> = [];
     result[0].forEach((pageData: any) => {
         const contentPage: ContentPage = {
             locale: pageData.locale,
@@ -25,30 +25,26 @@ export async function fetchContentPages(): Promise<
             title: pageData.title,
             uid: pageData.uid,
         };
-        contentPageRouteData.push({
+        allPageData.push({
             payload: contentPage,
             route: pageData.url,
         });
     });
-    return contentPageRouteData;
+    console.log(`Fetched ${allPageData.length} pages`);
+    return allPageData;
 }
 
 export async function fetchContentPage(url: string): Promise<ContentPage> {
     console.log('Fetching data for:', url);
-    const config = useRuntimeConfig();
-    const stack = Stack({
-        api_key: config?.public?.contentstackApikey,
-        delivery_token: config?.public?.contentstackDeliverytoken,
-        environment: config?.public?.contentstackEnvironment,
-    });
-    const contentType = 'schouls_content_page';
-    const query = stack.ContentType(contentType).Query();
-    const result: Array<any> = await query.where('url', url).toJSON().find();
-
-    const pageData = result[0][0];
+    const pageData = allPageData.find((item) => item.route === url)?.payload;
+    if (!pageData) {
+        const errorMessage = `Unable to find page data for ${url}`;
+        console.error(errorMessage);
+        throw new Error(errorMessage);
+    }
     return {
         locale: pageData.locale,
-        pageContent: pageData.page_content,
+        pageContent: pageData.pageContent,
         subtext: pageData.subtext,
         title: pageData.title,
         uid: pageData.uid,
