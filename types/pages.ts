@@ -1,10 +1,10 @@
 type ContentstackPage = {
-  locale: string;
-  uid: string;
+    locale: string;
+    uid: string;
 };
 
 export type ContentPage = ContentstackPage & {
-  title: string;
-  subtext: string;
-  pageContent: string;
+    title: string;
+    subtext: string;
+    pageContent: string;
 };
