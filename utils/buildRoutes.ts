@@ -6,19 +6,12 @@ const stack = Stack({
     environment: process.env.NUXT_PUBLIC_CONTENTSTACK_ENVIRONMENT || '',
 });
 export async function buildRoutes(
-    contentType?: string
+    contentType: Array<string>
 ): Promise<Array<string>> {
     console.log('Fetching URLs');
     const allPages: Array<string> = [];
     const contentTypesToQuery: Array<string> = [];
-    if (contentType) {
-        console.log('Using content type: ', contentType);
-        contentTypesToQuery.push(contentType);
-    } else {
-        const types = await getContentTypes();
-        console.log(`Found ${types.length} content types`);
-        contentTypesToQuery.push(...types);
-    }
+    contentTypesToQuery.push(...contentType);
     for (const contentType of contentTypesToQuery) {
         const query = stack.ContentType(contentType).Query();
         const result: Array<any> = await query.toJSON().find();
@@ -31,10 +24,4 @@ export async function buildRoutes(
     }
     console.log(`Fetched ${allPages.length} pages`);
     return allPages;
-}
-
-async function getContentTypes(): Promise<Array<string>> {
-    return (await stack.getContentTypes()).content_types.map(
-        (type) => type.uid
-    );
 }

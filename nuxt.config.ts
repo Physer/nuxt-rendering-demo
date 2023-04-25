@@ -1,4 +1,5 @@
 import { buildRoutes } from './utils/buildRoutes';
+import { contentTypes } from './utils/contentTypes';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -7,7 +8,7 @@ export default defineNuxtConfig({
             if (nitroConfig.dev) {
                 return;
             }
-            const routes = await buildRoutes();
+            const routes = await buildRoutes([contentTypes.contentPage]);
             nitroConfig?.prerender?.routes?.push(...routes);
         },
     },

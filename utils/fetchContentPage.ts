@@ -11,7 +11,7 @@ export async function fetchContentPage(url: string): Promise<ContentPage> {
         environment: config?.public?.contentstackEnvironment,
     });
     const query = stack.ContentType(contentTypes.contentPage).Query();
-    const result: Array<any> = await query.toJSON().find();
+    const result: Array<any> = await query.where('url', url).toJSON().find();
     const pageData = result[0][0];
     if (!pageData) {
         throw new Error(`Unable to find page data for ${url}`);
