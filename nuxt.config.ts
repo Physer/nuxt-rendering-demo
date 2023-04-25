@@ -1,12 +1,14 @@
-import { fetchContentPages } from './utils/fetcher';
+import { buildRoutes } from './utils/buildRoutes';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     hooks: {
-        'prerender:routes': async (ctx) => {
-            (await fetchContentPages()).forEach((item) =>
-                ctx.routes.add(item.route)
-            );
+        async 'nitro:config'(nitroConfig) {
+            if (nitroConfig.dev) {
+                return;
+            }
+            const routes = await buildRoutes();
+            nitroConfig?.prerender?.routes?.push(...routes);
         },
     },
     build: {

@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { fetchContentPage } from '~/utils/fetcher';
+import { fetchContentPage } from '~/utils/fetchContentPage.js';
 const route = useRoute();
 const data = await fetchContentPage(`/${route?.params?.url}`);
 </script>
