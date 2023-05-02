@@ -22,4 +22,7 @@ export default defineNuxtConfig({
             contentstackEnvironment: 'dev',
         },
     },
+    experimental: {
+        payloadExtraction: false,
+    },
 });
