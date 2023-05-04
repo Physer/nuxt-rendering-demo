@@ -1,12 +1,6 @@
-import { Stack } from 'contentstack';
+import { getContentPages } from '../../utils/pages';
 
-const stack = Stack({
-    api_key: process.env.CONTENTSTACK_APIKEY || '',
-    delivery_token: process.env.CONTENTSTACK_DELIVERYTOKEN || '',
-    environment: process.env.CONTENTSTACK_ENVIRONMENT || '',
-});
 const pages: Array<any> = [];
-
 export default function CmsPage({ currentPage }: any) {
     return (
         <>
@@ -15,7 +9,7 @@ export default function CmsPage({ currentPage }: any) {
                 <p>Subtext: {currentPage.subtext}</p>
                 <div
                     dangerouslySetInnerHTML={{
-                        __html: currentPage.page_content,
+                        __html: currentPage.pageContent,
                     }}
                 ></div>
             </div>
@@ -24,13 +18,7 @@ export default function CmsPage({ currentPage }: any) {
 }
 
 export async function getStaticPaths() {
-    const query = stack.ContentType('schouls_content_page').Query();
-    const result: Array<any> = await query.toJSON().find();
-    for (const pageItem of result[0]) {
-        if (pageItem) {
-            pages.push(pageItem);
-        }
-    }
+    pages.push(...(await getContentPages()));
     const paths = pages.map((page) => ({
         params: { url: page.url.split('/')[1] },
     }));
