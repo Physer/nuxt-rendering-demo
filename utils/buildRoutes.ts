@@ -13,6 +13,7 @@ export async function buildRoutes(
     const contentTypesToQuery: Array<string> = [];
     contentTypesToQuery.push(...contentType);
     for (const contentType of contentTypesToQuery) {
+        console.log('Querying Contentstack...');
         const query = stack.ContentType(contentType).Query();
         const result: Array<any> = await query.toJSON().find();
         for (const pageItem of result[0]) {
