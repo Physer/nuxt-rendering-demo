@@ -10,6 +10,7 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@ssg-demo/cms": "file:../cms",
         "contentstack": "^3.17.1",
         "next": "13.3.4",
         "react": "18.2.0",
