@@ -5,7 +5,7 @@
     "author": "Alex Schouls",
     "scripts": {
         "build": "nuxt build",
-        "clean": "npx rimraf .nuxt .output dist && npx nuxi prepare",
+        "clean": "npx rimraf .nuxt .output dist",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "postinstall": "nuxt prepare",
