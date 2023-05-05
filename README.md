@@ -18,6 +18,12 @@ Nuxt version 3 is used as a showcase of SSG with NuxtJS.
 
 The repository uses workspaces. Go to the root of the repository and run `npm install` to install the dependencies.
 
+### Prepare CMS library
+
+Before you can run the application, ensure you have the right environment variables available in your `.env` file. You can use `.env.example` as an example. Fill in the necessary values before you continue.
+
+### The applications
+
 In order to run the application using NextJS run the following commands:
 
 1. `npm run next:build`
