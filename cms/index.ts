@@ -6,7 +6,9 @@ const stack = Stack({
 });
 export async function getContentPages(): Promise<Array<ContentPage>> {
     const pages = [];
-    const query = stack.ContentType('schouls_content_page').Query();
+    const query = stack
+        .ContentType(process.env.CONTENTSTACK_PAGETYPE as string)
+        .Query();
     const result: Array<any> = await query.toJSON().find();
     for (const pageItem of result[0]) {
         if (pageItem) {

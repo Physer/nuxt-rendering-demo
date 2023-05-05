@@ -12,11 +12,6 @@
         "preview": "nuxt preview"
     },
     "dependencies": {
-        "contentstack": "^3.17.1",
         "nuxt": "^3.4.2"
-    },
-    "devDependencies": {
-        "@types/node": "^18",
-        "prettier": "^2.8.8"
     }
 }
