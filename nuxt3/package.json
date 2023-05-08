@@ -1,17 +1,16 @@
 {
     "name": "@ssg-demo/nuxt3",
-    "version": "0.1.0",
     "private": true,
     "author": "Alex Schouls",
     "scripts": {
         "build": "nuxt build",
-        "clean": "npx rimraf .nuxt .output dist",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
-        "postinstall": "nuxt prepare",
-        "preview": "nuxt preview"
+        "preview": "nuxt preview",
+        "postinstall": "nuxt prepare"
     },
-    "dependencies": {
-        "nuxt": "^3.4.2"
+    "devDependencies": {
+        "@types/node": "^18",
+        "nuxt": "^3.4.3"
     }
 }
