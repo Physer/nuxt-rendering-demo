@@ -6,11 +6,16 @@
         "build": "nuxt build",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
-        "preview": "nuxt preview",
-        "postinstall": "nuxt prepare"
+        "preinstall": "cd ../cms && npm i && npm run build-lib",
+        "postinstall": "nuxt prepare",
+        "preview": "nuxt preview"
+    },
+    "dependencies": {
+        "@ssg-demo/cms": "file:../cms"
     },
     "devDependencies": {
-        "@types/node": "^18",
-        "nuxt": "^3.4.3"
+        "@types/node": "^18.16.6",
+        "nuxt": "^3.4.3",
+        "typescript": "^5.0.4"
     }
 }

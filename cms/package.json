@@ -9,7 +9,9 @@
         "dotenv": "^16.0.3"
     },
     "devDependencies": {
-        "encoding": "^0.1.13"
+        "@types/node": "^20.1.1",
+        "encoding": "^0.1.13",
+        "typescript": "^5.0.4"
     },
     "scripts": {
         "build-lib": "tsc",
