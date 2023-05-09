@@ -1,5 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+    build: {
+        transpile: ['contentstack'],
+    },
     runtimeConfig: {
         public: {
             contentstackApikey: '',
@@ -7,5 +10,8 @@ export default defineNuxtConfig({
             contentstackEnvironment: 'dev',
             contentstackPagetype: '',
         },
+    },
+    experimental: {
+        payloadExtraction: false,
     },
 });
