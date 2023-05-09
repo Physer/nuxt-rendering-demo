@@ -4,6 +4,7 @@
     "author": "Alex Schouls",
     "scripts": {
         "build": "nuxt build",
+        "clean": "npx rimraf .nuxt .output dist",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "postinstall": "nuxt prepare",
@@ -15,6 +16,7 @@
     "devDependencies": {
         "@types/node": "^18.16.6",
         "nuxt": "^3.4.3",
+        "rimraf": "^5.0.0",
         "typescript": "^5.0.4"
     }
 }

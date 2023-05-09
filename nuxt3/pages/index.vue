@@ -2,8 +2,8 @@
   <div>
     <p>Select a page:</p>
     <ul>
-      <li v-for="page in pages">
-        <NuxtLink to={{ page.url }}>{{ page.title }}</NuxtLink>
+      <li v-for="page in  pages ">
+        <NuxtLink :to=page.url>{{ page.title }}</NuxtLink>
       </li>
     </ul>
   </div>
@@ -12,5 +12,6 @@
 <script setup>
 import { getContentPages } from '../getContentPages';
 
-const pages = await getContentPages();
+const config = useRuntimeConfig();
+const pages = await getContentPages(config?.public);
 </script>

@@ -1,15 +1,17 @@
 import { Stack } from 'contentstack';
-const stack = Stack({
-    api_key: process.env.CONTENTSTACK_APIKEY || '',
-    delivery_token: process.env.CONTENTSTACK_DELIVERYTOKEN || '',
-    environment: process.env.CONTENTSTACK_ENVIRONMENT || '',
-});
-export async function getContentPages(): Promise<Array<ContentPage>> {
+import { PublicRuntimeConfig } from 'nuxt/schema';
+export async function getContentPages(
+    config: PublicRuntimeConfig
+): Promise<Array<ContentPage>> {
+    console.info('Using configuration', config);
+    const stack = Stack({
+        api_key: config?.contentstackApikey,
+        delivery_token: config?.contentstackDeliverytoken,
+        environment: config?.contentstackEnvironment,
+    });
     const pages = [];
     console.info('Querying Contentstack');
-    const query = stack
-        .ContentType(process.env.CONTENTSTACK_PAGETYPE as string)
-        .Query();
+    const query = stack.ContentType(config?.contentstackPagetype).Query();
     const result: Array<any> = await query.toJSON().find();
     for (const pageItem of result[0]) {
         if (pageItem) {
