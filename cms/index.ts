@@ -6,6 +6,7 @@ const stack = Stack({
 });
 export async function getContentPages(): Promise<Array<ContentPage>> {
     const pages = [];
+    console.info('Querying Contentstack');
     const query = stack
         .ContentType(process.env.CONTENTSTACK_PAGETYPE as string)
         .Query();
