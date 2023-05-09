@@ -5,11 +5,11 @@ export default function CmsPage({ currentPage }: any) {
     return (
         <>
             <div>
-                <p>Title: {currentPage.title}</p>
-                <p>Subtext: {currentPage.subtext}</p>
+                <p>Title: {currentPage?.title}</p>
+                <p>Subtext: {currentPage?.subtext}</p>
                 <div
                     dangerouslySetInnerHTML={{
-                        __html: currentPage.pageContent,
+                        __html: currentPage?.pageContent,
                     }}
                 ></div>
             </div>
@@ -26,6 +26,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-    const currentPage = pages.find((page) => page.url === `/${params.url}`);
+    if (process.env.NODE_ENV == 'development') {
+        pages.push(...(await getContentPages()));
+    }
+    const currentPage =
+        pages?.find((page) => page.url === `/${params.url}`) || null;
     return { props: { currentPage } };
 }
