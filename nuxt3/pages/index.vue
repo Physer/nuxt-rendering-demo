@@ -1,0 +1,16 @@
+<template>
+  <div>
+    <p>Select a page:</p>
+    <ul>
+      <li v-for="page in pages">
+        <NuxtLink to={{ page.url }}>{{ page.title }}</NuxtLink>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script setup>
+import { getContentPages } from '@ssg-demo/cms';
+
+const pages = await getContentPages();
+</script>
