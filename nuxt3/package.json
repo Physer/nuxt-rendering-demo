@@ -6,12 +6,11 @@
         "build": "nuxt build",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
-        "preinstall": "cd ../cms && npm i && npm run build-lib",
         "postinstall": "nuxt prepare",
         "preview": "nuxt preview"
     },
     "dependencies": {
-        "@ssg-demo/cms": "file:../cms"
+        "contentstack": "^3.17.1"
     },
     "devDependencies": {
         "@types/node": "^18.16.6",

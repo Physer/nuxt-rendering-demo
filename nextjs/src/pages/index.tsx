@@ -1,4 +1,4 @@
-import { ContentPage, getContentPages } from '@ssg-demo/cms';
+import { ContentPage, getContentPages } from '@/getContentPages';
 import Link from 'next/link';
 
 export default function Home({ pages }: any) {

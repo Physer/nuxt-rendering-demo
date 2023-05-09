@@ -1,4 +1,4 @@
-import { getContentPages } from '@ssg-demo/cms';
+import { getContentPages } from '@/getContentPages';
 
 const pages: Array<any> = [];
 export default function CmsPage({ currentPage }: any) {

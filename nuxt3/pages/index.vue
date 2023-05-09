@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { getContentPages } from '@ssg-demo/cms';
+import { getContentPages } from '../getContentPages';
 
 const pages = await getContentPages();
 </script>
