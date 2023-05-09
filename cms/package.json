@@ -4,6 +4,11 @@
     "private": true,
     "author": "Alex Schouls",
     "main": "dist/index.js",
+    "scripts": {
+        "build-lib": "tsc",
+        "clean": "npx rimraf dist",
+        "preinstall": "npm run clean"
+    },
     "dependencies": {
         "contentstack": "^3.17.1",
         "dotenv": "^16.0.3"
@@ -13,9 +18,5 @@
         "encoding": "^0.1.13",
         "prettier": "^2.8.8",
         "typescript": "^5.0.4"
-    },
-    "scripts": {
-        "build-lib": "tsc",
-        "clean": "npx rimraf dist"
     }
 }
